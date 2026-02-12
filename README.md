@@ -55,3 +55,22 @@ After setting the variable, you can run the deployment with the Sepolia network:
 ```shell
 npx hardhat ignition deploy --network sepolia ignition/modules/Counter.ts
 ```
+# Base Dev Journey
+
+## Contracts Deployed (Base Sepolia)
+
+### Counter V1
+0x4aa1c02a9a0fbe75b2b7369c809df974b3e6dfd6
+
+### Counter V2
+0xeded7187e4817ce4d5f6d6c29ef54b4b07734adf
+
+## Features
+- Increment counter
+- Increment by custom value
+- Reset counter
+- Receive ETH
+- Emit events
+
+## Network
+Base Sepolia Testnet

@@ -1,0 +1,31 @@
+[
+  {
+    "type": "function",
+    "name": "x",
+    "stateMutability": "view",
+    "inputs": [],
+    "outputs": [{ "name": "", "type": "uint256" }]
+  },
+  {
+    "type": "function",
+    "name": "inc",
+    "stateMutability": "nonpayable",
+    "inputs": [],
+    "outputs": []
+  },
+  {
+    "type": "function",
+    "name": "incBy",
+    "stateMutability": "nonpayable",
+    "inputs": [{ "name": "_value", "type": "uint256" }],
+    "outputs": []
+  },
+  {
+    "type": "function",
+    "name": "reset",
+    "stateMutability": "nonpayable",
+    "inputs": [],
+    "outputs": []
+  },
+  { "type": "receive", "stateMutability": "payable" }
+]

@@ -13,7 +13,7 @@ export const CONFIG = {
 
   // Agent policy parameters (tune these)
   minX: 20n,
-  maxX: 40n,
+  maxX: 50n,
   step: 5n,
 
   // Safety rails

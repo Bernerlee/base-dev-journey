@@ -1,76 +1,90 @@
-# Sample Hardhat 3 Beta Project (`node:test` and `viem`)
+# Base Counter Agent
 
-This project showcases a Hardhat 3 Beta project using the native Node.js test runner (`node:test`) and the `viem` library for Ethereum interactions.
+Autonomous smart contract management system built on Base.
 
-To learn more about the Hardhat 3 Beta, please visit the [Getting Started guide](https://hardhat.org/docs/getting-started#getting-started-with-hardhat-3). To share your feedback, join our [Hardhat 3 Beta](https://hardhat.org/hardhat3-beta-telegram-group) Telegram group or [open an issue](https://github.com/NomicFoundation/hardhat/issues/new) in our GitHub issue tracker.
+This project deploys and manages an onchain counter contract using a policy-driven automation agent. All agent transactions are attributed using Base Builder Code (ERC-8021).
 
-## Project Overview
+---
 
-This example project includes:
-
-- A simple Hardhat configuration file.
-- Foundry-compatible Solidity unit tests.
-- TypeScript integration tests using [`node:test`](nodejs.org/api/test.html), the new Node.js native test runner, and [`viem`](https://viem.sh/).
-- Examples demonstrating how to connect to different types of networks, including locally simulating OP mainnet.
-
-## Usage
-
-### Running Tests
-
-To run all the tests in the project, execute the following command:
-
-```shell
-npx hardhat test
-```
-
-You can also selectively run the Solidity or `node:test` tests:
-
-```shell
-npx hardhat test solidity
-npx hardhat test nodejs
-```
-
-### Make a deployment to Sepolia
-
-This project includes an example Ignition module to deploy the contract. You can deploy this module to a locally simulated chain or to Sepolia.
-
-To run the deployment to a local chain:
-
-```shell
-npx hardhat ignition deploy ignition/modules/Counter.ts
-```
-
-To run the deployment to Sepolia, you need an account with funds to send the transaction. The provided Hardhat configuration includes a Configuration Variable called `SEPOLIA_PRIVATE_KEY`, which you can use to set the private key of the account you want to use.
-
-You can set the `SEPOLIA_PRIVATE_KEY` variable using the `hardhat-keystore` plugin or by setting it as an environment variable.
-
-To set the `SEPOLIA_PRIVATE_KEY` config variable using `hardhat-keystore`:
-
-```shell
-npx hardhat keystore set SEPOLIA_PRIVATE_KEY
-```
-
-After setting the variable, you can run the deployment with the Sepolia network:
-
-```shell
-npx hardhat ignition deploy --network sepolia ignition/modules/Counter.ts
-```
-# Base Dev Journey
-
-## Contracts Deployed (Base Sepolia)
+## 🔗 Deployed Contracts (Base Sepolia)
 
 ### Counter V1
+
 0x4aa1c02a9a0fbe75b2b7369c809df974b3e6dfd6
 
 ### Counter V2
+
 0xeded7187e4817ce4d5f6d6c29ef54b4b07734adf
 
-## Features
-- Increment counter
-- Increment by custom value
-- Reset counter
-- Receive ETH
-- Emit events
+---
 
-## Network
-Base Sepolia Testnet
+## 🧠 System Overview
+
+The system consists of:
+
+- Solidity smart contracts deployed on Base Sepolia
+- A TypeScript-based autonomous agent
+- Policy-driven execution logic
+- Human (main wallet) governance interactions
+- ERC-8021 Builder Code attribution
+
+The agent reads contract state and executes transactions based on configurable thresholds.
+
+---
+
+## ⚙️ Agent Logic
+
+Default policy:
+
+- Minimum threshold: 10
+- Maximum threshold: 50
+- Step increment: 7
+
+Behavior:
+
+- If `x < min` → call `incBy(step)`
+- If `x > max` → call `reset()`
+- Otherwise → no action
+
+---
+
+## 🏷 Builder Code Attribution (ERC-8021)
+
+Builder Code:
+bc_o1eooot7
+
+All agent-generated transactions include the ERC-8021 builder suffix for onchain attribution.
+
+Example attributed transaction:
+(Replace with one of your real tx links)
+https://sepolia.basescan.org/tx/YOUR_TX_HASH
+
+---
+
+## 🔁 Human + Agent Interaction Model
+
+The system supports:
+
+- Manual interaction via Rabby (main wallet)
+- Autonomous policy execution via the agent
+- Event emissions
+- ETH transfers with `receive()` support
+
+This creates a hybrid governance + automation model on Base.
+
+---
+
+## 🛠 Tech Stack
+
+- Solidity
+- Hardhat
+- Viem
+- TypeScript
+- Base Sepolia
+- ERC-8021 Builder Codes
+
+---
+
+## 🚀 Running the Agent
+
+Navigate to:

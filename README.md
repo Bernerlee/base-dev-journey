@@ -16,6 +16,16 @@ This project deploys and manages an onchain counter contract using a policy-driv
 
 0xeded7187e4817ce4d5f6d6c29ef54b4b07734adf
 
+## Example Attributed Agent Transaction
+
+RESET triggered by Counter Manager Agent (Builder Code integrated)
+
+Tx Hash:
+https://sepolia.basescan.org/tx/0x3d4f4580b702265f7b6114e88f3545048149eebf4e479e17e2b1d06c817d6772
+
+Description:
+Human pushed counter above max → Agent detected violation → Agent executed reset() onchain.
+
 ---
 
 ## 🧠 System Overview
@@ -72,7 +82,7 @@ The system supports:
 
 This creates a hybrid governance + automation model on Base.
 
----
+---What is next for today?
 
 ## 🛠 Tech Stack
 

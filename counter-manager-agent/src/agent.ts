@@ -1,8 +1,18 @@
 import { CONFIG } from "./config.js";
 import { log, warn, err } from "./logger.js";
-import { readX, incBy, reset } from "./counter.js";
+import {
+  readX,
+  readMinX,
+  readMaxX,
+  readStep,
+  incBy,
+  reset,
+} from "./counter.js";
 import { decide } from "./policy.js";
 import { publicClient } from "./base.js";
+
+let lastResetTimestamp = 0;
+const RESET_COOLDOWN_SECONDS = 300; // 5 minutes
 
 type DayState = { day: string; txCount: number };
 let dayState: DayState = { day: new Date().toDateString(), txCount: 0 };
@@ -28,10 +38,27 @@ async function maybeNotify(msg: string) {
 export async function tick() {
   rolloverDayIfNeeded();
 
-  const x = await readX();
-  const action = decide(x, CONFIG.minX, CONFIG.maxX, CONFIG.step);
+  // ✅ Read onchain state + onchain policy
+  const [x, minX, maxX, step] = await Promise.all([
+    readX(),
+    readMinX(),
+    readMaxX(),
+    readStep(),
+  ]);
 
-  log("x =", x.toString(), "| decision:", action.type, "|", action.reason);
+  // ✅ Decide using onchain policy (not CONFIG.*)
+  const action = decide(x, minX, maxX, step);
+
+  log(
+    "x =",
+    x.toString(),
+    "| policy:",
+    `[min=${minX.toString()} max=${maxX.toString()} step=${step.toString()}]`,
+    "| decision:",
+    action.type,
+    "|",
+    action.reason,
+  );
 
   if (action.type === "NONE") return;
 
@@ -43,7 +70,15 @@ export async function tick() {
   try {
     let hash: `0x${string}`;
     if (action.type === "INC_BY") hash = await incBy(action.value);
-    else hash = await reset();
+    else {
+      const now = Math.floor(Date.now() / 1000);
+      if (now - lastResetTimestamp < RESET_COOLDOWN_SECONDS) {
+        warn("Reset skipped due to cooldown.");
+        return;
+      }
+      hash = await reset();
+      lastResetTimestamp = now;
+    }
 
     dayState.txCount += 1;
 

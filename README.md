@@ -6,17 +6,32 @@ This project deploys and manages an onchain counter contract using a policy-driv
 
 ---
 
-## 🔗 Deployed Contracts (Base Sepolia)
+## 🌐 Network Deployments
+
+## 🔵 Deployed Contracts (Base Mainnet)
+
+### Counter (Mainnet)
+
+`0x7b1a90cc876453de36e92e0179f784a3a30d26b1`
+
+Basescan:
+https://basescan.org/address/0x7b1a90cc876453de36e92e0179f784a3a30d26b1
+
+---
+
+## 🟣 Deployed Contracts (Base Sepolia)
 
 ### Counter V1
 
-0x4aa1c02a9a0fbe75b2b7369c809df974b3e6dfd6
+`0x4aa1c02a9a0fbe75b2b7369c809df974b3e6dfd6`
 
 ### Counter V2
 
-0xeded7187e4817ce4d5f6d6c29ef54b4b07734adf
+`0xeded7187e4817ce4d5f6d6c29ef54b4b07734adf`
 
-## Example Attributed Agent Transaction
+---
+
+## Example Attributed Agent Transaction (Sepolia)
 
 RESET triggered by Counter Manager Agent (Builder Code integrated)
 
@@ -24,7 +39,7 @@ Tx Hash:
 https://sepolia.basescan.org/tx/0x3d4f4580b702265f7b6114e88f3545048149eebf4e479e17e2b1d06c817d6772
 
 Description:
-Human pushed counter above max → Agent detected violation → Agent executed reset() onchain.
+Human pushed counter above max → Agent detected violation → Agent executed `reset()` onchain.
 
 ---
 
@@ -32,7 +47,7 @@ Human pushed counter above max → Agent detected violation → Agent executed r
 
 The system consists of:
 
-- Solidity smart contracts deployed on Base Sepolia
+- Solidity smart contracts deployed on Base (Sepolia + Mainnet)
 - A TypeScript-based autonomous agent
 - Policy-driven execution logic
 - Human (main wallet) governance interactions
@@ -61,13 +76,9 @@ Behavior:
 ## 🏷 Builder Code Attribution (ERC-8021)
 
 Builder Code:
-bc_o1eooot7
+`bc_o1eooot7`
 
 All agent-generated transactions include the ERC-8021 builder suffix for onchain attribution.
-
-Example attributed transaction:
-(Replace with one of your real tx links)
-https://sepolia.basescan.org/tx/YOUR_TX_HASH
 
 ---
 
@@ -82,7 +93,7 @@ The system supports:
 
 This creates a hybrid governance + automation model on Base.
 
----What is next for today?
+---
 
 ## 🛠 Tech Stack
 
@@ -90,6 +101,7 @@ This creates a hybrid governance + automation model on Base.
 - Hardhat
 - Viem
 - TypeScript
+- Base Mainnet
 - Base Sepolia
 - ERC-8021 Builder Codes
 
@@ -98,3 +110,9 @@ This creates a hybrid governance + automation model on Base.
 ## 🚀 Running the Agent
 
 Navigate to:
+
+```bash
+cd counter-manager-agent
+npm install
+npm run start
+```

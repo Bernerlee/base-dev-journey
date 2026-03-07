@@ -27,7 +27,7 @@ https://basescan.org/address/0x7b1a90cc876453de36e92e0179f784a3a30d26b1
 
 ### Counter V2
 
-`0xebaA97035548ab425d7a27b9fb7dc0aae3b50f2c`
+`0xebaa97d35548ab425d7a27b9fb7de0aae3b50f2c`
 
 ---
 

@@ -1,0 +1,147 @@
+export const COUNTER_ADDRESS =
+  "0x7b1a90cc876453de36e92e0179f784a3a30d26b1" as const;
+
+export const BUILDER_CODE = "bc_o1eooot7" as const;
+
+export const COUNTER_ABI = [
+  {
+    inputs: [
+      { internalType: "uint256", name: "_minX", type: "uint256" },
+      { internalType: "uint256", name: "_maxX", type: "uint256" },
+      { internalType: "uint256", name: "_step", type: "uint256" },
+    ],
+    stateMutability: "nonpayable",
+    type: "constructor",
+  },
+  {
+    anonymous: false,
+    inputs: [
+      { indexed: true, internalType: "address", name: "caller", type: "address" },
+      { indexed: false, internalType: "string", name: "action", type: "string" },
+      { indexed: false, internalType: "string", name: "builderCode", type: "string" },
+    ],
+    name: "BuilderTagged",
+    type: "event",
+  },
+  {
+    anonymous: false,
+    inputs: [{ indexed: false, internalType: "uint256", name: "value", type: "uint256" }],
+    name: "Increment",
+    type: "event",
+  },
+  {
+    anonymous: false,
+    inputs: [{ indexed: true, internalType: "address", name: "newOwner", type: "address" }],
+    name: "OwnershipTransferred",
+    type: "event",
+  },
+  {
+    anonymous: false,
+    inputs: [
+      { indexed: false, internalType: "uint256", name: "minX", type: "uint256" },
+      { indexed: false, internalType: "uint256", name: "maxX", type: "uint256" },
+    ],
+    name: "RangeUpdated",
+    type: "event",
+  },
+  {
+    anonymous: false,
+    inputs: [
+      { indexed: true, internalType: "address", name: "sender", type: "address" },
+      { indexed: false, internalType: "uint256", name: "amount", type: "uint256" },
+    ],
+    name: "Received",
+    type: "event",
+  },
+  { anonymous: false, inputs: [], name: "Reset", type: "event" },
+  {
+    anonymous: false,
+    inputs: [{ indexed: false, internalType: "uint256", name: "step", type: "uint256" }],
+    name: "StepUpdated",
+    type: "event",
+  },
+  {
+    inputs: [
+      { internalType: "uint256", name: "value", type: "uint256" },
+      { internalType: "string", name: "builderCode", type: "string" },
+    ],
+    name: "incBy",
+    outputs: [],
+    stateMutability: "nonpayable",
+    type: "function",
+  },
+  {
+    inputs: [],
+    name: "maxX",
+    outputs: [{ internalType: "uint256", name: "", type: "uint256" }],
+    stateMutability: "view",
+    type: "function",
+  },
+  {
+    inputs: [],
+    name: "minX",
+    outputs: [{ internalType: "uint256", name: "", type: "uint256" }],
+    stateMutability: "view",
+    type: "function",
+  },
+  {
+    inputs: [],
+    name: "owner",
+    outputs: [{ internalType: "address", name: "", type: "address" }],
+    stateMutability: "view",
+    type: "function",
+  },
+  {
+    inputs: [{ internalType: "string", name: "builderCode", type: "string" }],
+    name: "reset",
+    outputs: [],
+    stateMutability: "nonpayable",
+    type: "function",
+  },
+  {
+    inputs: [
+      { internalType: "uint256", name: "_minX", type: "uint256" },
+      { internalType: "uint256", name: "_maxX", type: "uint256" },
+      { internalType: "string", name: "builderCode", type: "string" },
+    ],
+    name: "setRange",
+    outputs: [],
+    stateMutability: "nonpayable",
+    type: "function",
+  },
+  {
+    inputs: [
+      { internalType: "uint256", name: "_step", type: "uint256" },
+      { internalType: "string", name: "builderCode", type: "string" },
+    ],
+    name: "setStep",
+    outputs: [],
+    stateMutability: "nonpayable",
+    type: "function",
+  },
+  {
+    inputs: [],
+    name: "step",
+    outputs: [{ internalType: "uint256", name: "", type: "uint256" }],
+    stateMutability: "view",
+    type: "function",
+  },
+  {
+    inputs: [
+      { internalType: "address", name: "newOwner", type: "address" },
+      { internalType: "string", name: "builderCode", type: "string" },
+    ],
+    name: "transferOwnership",
+    outputs: [],
+    stateMutability: "nonpayable",
+    type: "function",
+  },
+  {
+    inputs: [],
+    name: "x",
+    outputs: [{ internalType: "uint256", name: "", type: "uint256" }],
+    stateMutability: "view",
+    type: "function",
+  },
+  { stateMutability: "payable", type: "receive" },
+] as const;

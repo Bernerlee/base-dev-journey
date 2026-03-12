@@ -6,9 +6,18 @@ import { WagmiProvider } from "wagmi";
 import { base, baseSepolia } from "wagmi/chains";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 
+// Validate projectId exists
+const projectId = process.env.NEXT_PUBLIC_WALLETCONNECT_PROJECT_ID;
+
+if (!projectId) {
+  throw new Error(
+    "NEXT_PUBLIC_WALLETCONNECT_PROJECT_ID is not defined. Please add it to your .env.local file.",
+  );
+}
+
 const config = getDefaultConfig({
   appName: "Base Counter Agent",
-  projectId: process.env.NEXT_PUBLIC_WALLETCONNECT_PROJECT_ID as string,
+  projectId, // Now it's guaranteed to be defined
   chains: [base, baseSepolia],
   ssr: true,
 });
